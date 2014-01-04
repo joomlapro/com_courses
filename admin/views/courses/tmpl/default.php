@@ -87,6 +87,12 @@ $assoc = JLanguageAssociations::isEnabled();
 						<th width="5%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'COM_COURSES_HEADING_LESSONS', 'nlessons', $listDirn, $listOrder); ?>
 						</th>
+						<th width="5%" class="nowrap hidden-phone">
+							<?php echo JText::_('COM_COURSES_HEADING_START'); ?>
+						</th>
+						<th width="5%" class="nowrap hidden-phone">
+							<?php echo JText::_('COM_COURSES_HEADING_END'); ?>
+						</th>
 						<th width="10%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 						</th>
@@ -191,6 +197,18 @@ $assoc = JLanguageAssociations::isEnabled();
 							</td>
 							<td class="small nowrap hidden-phone">
 								<?php echo $this->escape($item->nlessons); ?>
+							</td>
+							<td class="small nowrap hidden-phone">
+								<?php if ($item->date_start != '0000-00-00 00:00:00'): ?>
+									<span class="label label-info"><?php echo JHtml::_('date', $item->date_start, JText::_('COM_COURSES_TIME_FORMAT')); ?></span><br>
+									<small><?php echo JHtml::_('date', $item->date_start, JText::_('COM_COURSES_DATE_FORMAT')); ?></small>
+								<?php endif; ?>
+							</td>
+							<td class="small nowrap hidden-phone">
+								<?php if ($item->date_end != '0000-00-00 00:00:00'): ?>
+									<span class="label"><?php echo JHtml::_('date', $item->date_end, JText::_('COM_COURSES_TIME_FORMAT')); ?></span><br>
+									<small><?php echo JHtml::_('date', $item->date_end, JText::_('COM_COURSES_DATE_FORMAT')); ?></small>
+								<?php endif; ?>
 							</td>
 							<td class="small hidden-phone">
 								<?php echo $this->escape($item->access_level); ?>

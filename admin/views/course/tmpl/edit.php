@@ -145,6 +145,12 @@ $return = urlencode(base64_encode(JUri::getInstance()));
 									<?php echo JText::_('COM_COURSES_HEADING_LESSON'); ?>
 								</th>
 								<th width="5%" class="nowrap hidden-phone">
+									<?php echo JText::_('COM_COURSES_HEADING_START'); ?>
+								</th>
+								<th width="5%" class="nowrap hidden-phone">
+									<?php echo JText::_('COM_COURSES_HEADING_END'); ?>
+								</th>
+								<th width="5%" class="nowrap hidden-phone">
 									<?php echo JText::_('COM_COURSES_HEADING_ACTIONS'); ?>
 								</th>
 								<th width="1%" class="nowrap center hidden-phone">
@@ -164,6 +170,18 @@ $return = urlencode(base64_encode(JUri::getInstance()));
 									</td>
 									<td class="nowrap">
 										<?php echo $lesson->title; ?>
+									</td>
+									<td class="small nowrap hidden-phone">
+										<?php if ($lesson->date_start != '0000-00-00 00:00:00'): ?>
+											<span class="label label-info"><?php echo JHtml::_('date', $lesson->date_start, JText::_('COM_COURSES_TIME_FORMAT')); ?></span><br>
+											<small><?php echo JHtml::_('date', $lesson->date_start, JText::_('COM_COURSES_DATE_FORMAT')); ?></small>
+										<?php endif; ?>
+									</td>
+									<td class="small nowrap hidden-phone">
+										<?php if ($lesson->date_end != '0000-00-00 00:00:00'): ?>
+											<span class="label"><?php echo JHtml::_('date', $lesson->date_end, JText::_('COM_COURSES_TIME_FORMAT')); ?></span><br>
+											<small><?php echo JHtml::_('date', $lesson->date_end, JText::_('COM_COURSES_DATE_FORMAT')); ?></small>
+										<?php endif; ?>
 									</td>
 									<td class="small nowrap hidden-phone">
 										<?php echo JHtml::_('link', 'index.php?option=com_courses&task=lesson.edit&id=' . $lesson->id . '&return=' . $return, JText::_('JACTION_EDIT'), array('class' => 'btn btn-default')); ?>

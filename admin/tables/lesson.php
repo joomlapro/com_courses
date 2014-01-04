@@ -254,7 +254,7 @@ class CoursesTableLesson extends JTable
 		// Verify that the alias is unique.
 		$table = JTable::getInstance('Lesson', 'CoursesTable');
 
-		if ($table->load(array('alias' => $this->alias)) && ($table->id != $this->id || $this->id == 0))
+		if ($table->load(array('course_id' => $this->course_id, 'alias' => $this->alias)) && ($table->id != $this->id || $this->id == 0))
 		{
 			$this->setError(JText::_('COM_COURSES_ERROR_LESSON_UNIQUE_ALIAS'));
 

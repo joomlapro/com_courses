@@ -65,7 +65,7 @@ class CoursesViewCourse extends JViewLegacy
 
 			// Get an instance of the generic lessons model.
 			$model = JModelLegacy::getInstance('Lessons', 'CoursesModel', array('ignore_request' => true));
-			$model->setState('list.select', 'a.id, a.title, a.state, a.ordering');
+			$model->setState('list.select', 'a.id, a.title, a.date_start, a.date_end, a.state, a.ordering');
 			$model->setState('list.ordering', 'a.ordering');
 			$model->setState('list.direction', 'asc');
 			$model->setState('filter.course_id', $this->item->id);
