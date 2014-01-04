@@ -4,6 +4,8 @@ CREATE TABLE `#__courses` (
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `date_start` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_end` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `vacancies` int(10) unsigned NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',

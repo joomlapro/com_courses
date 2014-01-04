@@ -33,6 +33,20 @@
 			hint="JFIELD_ALIAS_PLACEHOLDER"
 			size="40" />
 		<field
+			name="date_start"
+			type="datetime"
+			class="inputbox datetime"
+			label="COM_COURSES_FIELD_DATE_START_LABEL"
+			description="COM_COURSES_FIELD_DATE_START_DESC"
+			size="40" />
+		<field
+			name="date_end"
+			type="datetime"
+			class="inputbox datetime"
+			label="COM_COURSES_FIELD_DATE_END_LABEL"
+			description="COM_COURSES_FIELD_DATE_END_DESC"
+			size="40" />
+		<field
 			name="vacancies"
 			type="text"
 			class="inputbox"

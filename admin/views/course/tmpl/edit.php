@@ -65,6 +65,8 @@ JHtml::_('jquery.framework');
 
 // Load JavaScript.
 JHtml::script('com_courses/jquery.bootbox.min.js', false, true);
+JHtml::script('com_courses/moment.min.js', false, true);
+JHtml::script('com_courses/jquery.combodate.js', false, true);
 
 // Get the full current URI.
 $return = urlencode(base64_encode(JUri::getInstance()));
@@ -101,6 +103,8 @@ $return = urlencode(base64_encode(JUri::getInstance()));
 				};
 			});
 		});
+
+		$('.datetime').combodate();
 	});
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_courses&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
@@ -111,6 +115,8 @@ $return = urlencode(base64_encode(JUri::getInstance()));
 				<div class="row-fluid">
 					<div class="span9">
 						<fieldset class="adminform">
+							<?php echo $this->form->getControlGroup('date_start'); ?>
+							<?php echo $this->form->getControlGroup('date_end'); ?>
 							<?php echo $this->form->getControlGroup('vacancies'); ?>
 							<?php echo $this->form->getInput('description'); ?>
 						</fieldset>

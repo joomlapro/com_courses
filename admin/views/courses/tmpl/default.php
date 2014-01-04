@@ -84,6 +84,9 @@ $assoc = JLanguageAssociations::isEnabled();
 						<th>
 							<?php echo JHtml::_('searchtools.sort', 'COM_COURSES_HEADING_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
+						<th width="5%" class="nowrap hidden-phone">
+							<?php echo JHtml::_('searchtools.sort', 'COM_COURSES_HEADING_LESSONS', 'nlessons', $listDirn, $listOrder); ?>
+						</th>
 						<th width="10%" class="nowrap hidden-phone">
 							<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 						</th>
@@ -111,7 +114,7 @@ $assoc = JLanguageAssociations::isEnabled();
 				</thead>
 				<tfoot>
 					<tr>
-						<td colspan="10">
+						<td colspan="11">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
@@ -185,6 +188,9 @@ $assoc = JLanguageAssociations::isEnabled();
 										<?php echo JText::_('JCATEGORY') . ": " . $this->escape($item->category_title); ?>
 									</div>
 								</div>
+							</td>
+							<td class="small nowrap hidden-phone">
+								<?php echo $this->escape($item->nlessons); ?>
 							</td>
 							<td class="small hidden-phone">
 								<?php echo $this->escape($item->access_level); ?>

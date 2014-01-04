@@ -54,7 +54,8 @@ class CoursesModelCourses extends JModelList
 				'author_id',
 				'category_id',
 				'level',
-				'tag'
+				'tag',
+				'nlessons'
 			);
 
 			if (JLanguageAssociations::isEnabled())
@@ -177,6 +178,10 @@ class CoursesModelCourses extends JModelList
 			)
 		);
 		$query->from($db->quoteName('#__courses') . ' AS a');
+
+		// Join over the lessons for counting.
+		$query->select('COUNT(le.id) AS nlessons')
+			->join('LEFT', '#__courses_lessons AS le ON a.id = le.course_id');
 
 		// Join over the language.
 		$query->select('l.title AS language_title')
@@ -332,6 +337,8 @@ class CoursesModelCourses extends JModelList
 		}
 
 		$query->order($db->escape($orderCol . ' ' . $orderDirn));
+
+		$query->group('a.id');
 
 		return $query;
 	}
