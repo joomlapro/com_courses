@@ -35,8 +35,44 @@ JHtml::_('behavior.caption');
 	<div class="page-header">
 		<h2>
 			<?php echo $this->escape($this->item->title); ?>
+			<?php if ($vacancies = $this->item->vacancies): ?>
+				<div class="pull-right">
+					<?php echo JText::sprintf('COM_COURSES_VACANCIES_NUMBER', $vacancies); ?>
+				</div>
+			<?php endif; ?>
 		</h2>
 	</div>
 
-	<?php var_dump($this->item); ?>
+	<?php if ($description = $this->item->description): ?>
+		<div class="description">
+			<?php echo $description; ?>
+		</div>
+	<?php endif; ?>
+
+	<?php if ($this->lessons): ?>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th width="5%" class="nowrap hidden-phone">
+						<?php echo JText::_('COM_COURSES_HEADING_NUMBER'); ?>
+					</th>
+					<th class="title">
+						<?php echo JText::_('COM_COURSES_HEADING_TITLE'); ?>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->lessons as $i => $lesson): ?>
+					<tr>
+						<td class="nowrap hidden-phone">
+							<?php echo $i + 1; ?>
+						</td>
+						<td class="title">
+							<?php echo $this->escape($lesson->title); ?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	<?php endif; ?>
 </div>

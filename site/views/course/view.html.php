@@ -60,6 +60,8 @@ class CoursesViewCourse extends JViewLegacy
 	 */
 	protected $user;
 
+	protected $lessons;
+
 	/**
 	 * Method to display the view.
 	 *
@@ -81,6 +83,18 @@ class CoursesViewCourse extends JViewLegacy
 		$this->print = $app->input->getBool('print');
 		$this->state = $this->get('State');
 		$this->user  = $user;
+
+		// Include dependancies.
+		JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_courses/models', 'CoursesModel');
+
+		// Get an instance of the generic lessons model.
+		$model = JModelLegacy::getInstance('Lessons', 'CoursesModel', array('ignore_request' => true));
+		$model->setState('list.select', 'a.id, a.title, a.date_start, a.date_end, a.state, a.ordering, a.access');
+		$model->setState('list.ordering', 'a.ordering');
+		$model->setState('list.direction', 'asc');
+		$model->setState('filter.course_id', $this->item->id);
+
+		$this->lessons = $model->getItems();
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

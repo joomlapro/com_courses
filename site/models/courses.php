@@ -182,7 +182,7 @@ class CoursesModelCourses extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.id, a.title, a.alias, a.date_start, a.date_end, a.description'
+				'a.id, a.title, a.alias, a.date_start, a.date_end, a.vacancies, a.description'
 				. ', a.checked_out, a.checked_out_time'
 				. ', a.catid, a.created, a.created_by, a.created_by_alias'
 				// Use created if modified is 0.

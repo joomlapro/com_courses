@@ -90,7 +90,7 @@ class CoursesModelCourse extends JModelItem
 				$query = $db->getQuery(true)
 					->select(
 						$this->getState(
-							'item.select', 'a.id, a.asset_id, a.title, a.alias, a.description'
+							'item.select', 'a.id, a.asset_id, a.title, a.alias, a.date_start, a.date_end, a.vacancies, a.description'
 							// If badcats is not null, this means that the course is inside an unpublished category
 							// In this case, the state is set to 0 to indicate Unpublished (even if the course state is Published)
 							. ', CASE WHEN badcats.id is null THEN a.state ELSE 0 END AS state'
