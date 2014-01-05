@@ -12,28 +12,28 @@
 defined('_JEXEC') or die;
 
 /**
- * Courses Component Category Tree.
+ * Courses categories view.
  *
- * @static
  * @package     Courses
  * @subpackage  com_courses
  * @author      Bruno Batista <bruno@atomtech.com.br>
  * @since       3.2
  */
-class CoursesCategories extends JCategories
+class CoursesViewCategories extends JViewCategories
 {
 	/**
-	 * Class constructor.
+	 * Language key for default page heading.
 	 *
-	 * @param   array  $options  Array of options.
-	 *
-	 * @since   3.2
+	 * @var    string
+	 * @since  3.2
 	 */
-	public function __construct($options = array())
-	{
-		$options['table']     = '#__courses';
-		$options['extension'] = 'com_courses';
+	protected $pageHeading = 'COM_COURSES_DEFAULT_PAGE_TITLE';
 
-		parent::__construct($options);
-	}
+	/**
+	 * The name of the extension for the category.
+	 *
+	 * @var    string
+	 * @since  3.2
+	 */
+	protected $extension = 'com_courses';
 }

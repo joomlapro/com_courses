@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout
+		title="COM_COURSES_COURSEFORM_VIEW_DEFAULT_TITLE"
+		option="COM_COURSES_COURSEFORM_VIEW_DEFAULT_OPTION">
+		<message>
+			<![CDATA[COM_COURSES_COURSEFORM_VIEW_DEFAULT_DESC]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field
+				name="enable_category"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				label="COM_COURSES_CREATE_COURSE_CATEGORY_LABEL"
+				description="COM_COURSES_CREATE_COURSE_CATEGORY_DESC"
+				default="0">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+				name="catid"
+				type="category"
+				label="JGLOBAL_CHOOSE_CATEGORY_LABEL"
+				description="JGLOBAL_CHOOSE_CATEGORY_DESC"
+				extension="com_courses" />
+		</fieldset>
+	</fields>
+</metadata>
