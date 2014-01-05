@@ -125,7 +125,7 @@
 		</fieldset>
 		<fieldset
 			name="course"
-			label="COM_COURSES_FIELDSET_COURSE_LABEL">
+			label="COM_COURSES_FIELDSET_COURSE_OPTIONS">
 			<field
 				name="show_title"
 				type="list"
