@@ -425,6 +425,12 @@ class Com_CoursesInstallerScript
 
 			$table->save($content_types);
 		}
+
+		// Adding Category "uncategorized" if installing or discovering.
+		if ($route != 'update')
+		{
+			$this->_addCategory();
+		}
 	}
 
 	/**
@@ -468,5 +474,56 @@ class Com_CoursesInstallerScript
 	public function uninstall(JAdapterInstance $adapter)
 	{
 		echo '<p>' . JText::_('COM_COURSES_UNINSTALL_TEXT') . '</p>';
+	}
+
+	/**
+	 * Method to add a default category "uncategorised".
+	 *
+	 * @return  integer  Id of the created category.
+	 *
+	 * @since   3.2
+	 */
+	protected function _addCategory()
+	{
+		// Include dependancies.
+		JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/models', 'CategoriesModel');
+		JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/tables');
+
+		// Get an instance of the generic category model.
+		$model = JModelLegacy::getInstance('Category', 'CategoriesModel', array('ignore_request' => true));
+
+		// Attempt to save the category.
+		$data  = array(
+			'id'          => 0,
+			'parent_id'   => 0,
+			'level'       => 1,
+			'path'        => 'uncategorised',
+			'extension'   => 'com_courses',
+			'title'       => 'Uncategorised',
+			'alias'       => 'uncategorised',
+			'description' => '',
+			'published'   => 1,
+			'params'      => '{"target":"","image":""}',
+			'metadata'    => '{"page_title":"","author":"","robots":""}',
+			'language'    => '*'
+		);
+
+		// Save the data.
+		$model->save($data);
+
+		// Initialiase variables.
+		$id    = $model->getItem()->id;
+		$db    = JFactory::getDbo();
+
+		// Updating all courses without category to have this new one.
+		$query = $db->getQuery(true)
+			->update($db->quoteName('#__courses'))
+			->set($db->quoteName('catid') . ' = ' . $db->quote((int) $id))
+			->where($db->quoteName('catid') . ' = ' . $db->quote(0));
+
+		$db->setQuery($query)
+			->query();
+
+		return;
 	}
 }

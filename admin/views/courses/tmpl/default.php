@@ -120,7 +120,7 @@ $assoc = JLanguageAssociations::isEnabled();
 				</thead>
 				<tfoot>
 					<tr>
-						<td colspan="11">
+						<td colspan="13">
 							<?php echo $this->pagination->getListFooter(); ?>
 						</td>
 					</tr>
